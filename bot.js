@@ -9,45 +9,54 @@ let secret = {
 var Twitter = new TwitterPackage(secret);
 
 // Call the stream function and pass in 'statuses/filter', our filter object, and our callback
-Twitter.stream(
-  "statuses/filter",
-  { track: "cari beasiswa" }, //https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/overview/standard-operators
-  function (stream) {
-    // when we get tweet data
-    stream.on("data", function (tweet) {
+Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
+  stream
+) {
+  // when we get tweet data
+  stream.on("data", function (tweet) {
+    // if it doesn't exists then it is an RT
+    if (!tweet.retweeted_status) {
       randomInt = Math.floor(Math.random() * 7);
 
       //build reply object
       var statusObj = {
         status:
           "Hi @" +
+          tweet.user.screen_name +
           ". Kalo kamu lagi sedang mencari informasi beasiswa, kamu bisa kunjungin website kita loh :)",
         in_reply_to_status_id: tweet.id_str,
       };
 
       if (randomInt === 1) {
         statusObj.status =
-          "Halo kak" +
+          "Halo kak @" +
+          tweet.user.screen_name +
           ". Terkait informasi beasiswa, di website kita ada beberapa informasi yang mungkin berguna buat kakak :D";
       } else if (randomInt === 2) {
         statusObj.status =
-          "Hi kak" +
+          "Hi kak @" +
+          tweet.user.screen_name +
           "!! Lagi nyari informasi beasiswa ya kak? Di website kita ada loh info beasiswa :)";
       } else if (randomInt === 3) {
         statusObj.status =
-          "Halo" +
+          "Halo @" +
+          tweet.user.screen_name +
           ". Di website kita ada informasi beasiswa nih, kalau mau cek aja ya :D";
       } else if (randomInt === 4) {
         statusObj.status =
-          "Hey kak" +
+          "Hey kak @" +
+          tweet.user.screen_name +
           "! Kalo sedang mencari informasi beasiswa mungkin bisa cek di website kita ya :)";
       } else if (randomInt === 5) {
         statusObj.status =
-          "Hi" +
+          "Hi @" +
+          tweet.user.screen_name +
           ". Di website kita ada informasi beasiswa yang mungkin bermanfaat nih, bisa cek langsung ya :D";
       } else if (randomInt === 6) {
         statusObj.status =
-          "Halo kak" + "! Kita punya info beasiswa nih, link ada di bio ya :D";
+          "Halo kak @" +
+          tweet.user.screen_name +
+          "! Kita punya info beasiswa nih, link ada di bio ya :D";
       }
 
       //call the post function to tweet
@@ -60,12 +69,12 @@ Twitter.stream(
         //print the text of the tweet we sent out
         console.log(tweetReply.text);
       });
-    });
+    }
+  });
 
-    // when we get an error
-    stream.on("error", function (error) {
-      //print out the error
-      console.log(error);
-    });
-  }
-);
+  // when we get an error
+  stream.on("error", function (error) {
+    //print out the error
+    console.log(error);
+  });
+});
