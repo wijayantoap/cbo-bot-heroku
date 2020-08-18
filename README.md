@@ -1,6 +1,6 @@
 # cbo-bot-heroku
 
 Twitter bot for caribeasiswa.online  
-Finding the matching keyword from twitter and send a "personalized" message for them ;)  
+Find matching keywords from twitter and send a "personalized" message to them;)
 
 https://twitter.com/caribeasiswa_ol
