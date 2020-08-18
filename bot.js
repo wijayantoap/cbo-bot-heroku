@@ -11,7 +11,7 @@ var Twitter = new TwitterPackage(secret);
 // Call the stream function and pass in 'statuses/filter', our filter object, and our callback
 Twitter.stream(
   "statuses/filter",
-  { track: "cari beasiswa -filter:retweets" }, //https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/overview/standard-operators
+  { track: "cari beasiswa -RT" }, //https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/overview/standard-operators
   function (stream) {
     // when we get tweet data
     stream.on("data", function (tweet) {
