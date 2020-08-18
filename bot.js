@@ -1,11 +1,18 @@
 var TwitterPackage = require("twitter");
 
+// var secret = {
+//   consumer_key: "1m8OTcuRro33l7OeznfyRWSNx",
+//   consumer_secret: "VPFHBuaT8jyYhji58gSxkTcF58TYLMVpH1MupaqcbT7h6fR2Mj",
+//   access_token_key: "1280845203364933633-4SUNL4js7twKPekGrOM5gAaIpm53uo",
+//   access_token_secret: "dWYZs4F81xk53COVxnpP2dcug4lyp8nAjKONlvQH24DgJ",
+// };
 let secret = {
   consumer_key: process.env.BOT_CONSUMER_KEY,
   consumer_secret: process.env.BOT_CONSUMER_SECRET,
   access_token: process.env.BOT_ACCESS_TOKEN,
   access_token_secret: process.env.BOT_ACCESS_TOKEN_SECRET,
 };
+console.log(secret);
 var Twitter = new TwitterPackage(secret);
 
 // Call the stream function and pass in 'statuses/filter', our filter object, and our callback
