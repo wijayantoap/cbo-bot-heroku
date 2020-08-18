@@ -16,7 +16,7 @@ Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
   stream.on("data", function (tweet) {
     // if it doesn't exists then it is an RT
     if (!tweet.retweeted_status) {
-      randomInt = Math.floor(Math.random() * 7);
+      randomInt = Math.floor(Math.random() * 9);
 
       //build reply object
       var statusObj = {
@@ -25,6 +25,7 @@ Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
           tweet.user.screen_name +
           ". Kalo kamu lagi sedang mencari informasi beasiswa, kamu bisa kunjungin website kita loh :)",
         in_reply_to_status_id: tweet.id_str,
+        auto_populate_reply_metadata: true,
       };
 
       if (randomInt === 1) {
@@ -57,6 +58,16 @@ Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
           "Halo kak @" +
           tweet.user.screen_name +
           "! Kita punya info beasiswa nih, link ada di bio ya :D";
+      } else if (randomInt === 7) {
+        statusObj.status =
+          "Hi kak @" +
+          tweet.user.screen_name +
+          "! Kalo sedang mencari informasi mengenai beasiswa bisa sekalian cek website kita ya :D";
+      } else if (randomInt === 8) {
+        statusObj.status =
+          "Halo kak @" +
+          tweet.user.screen_name +
+          "! Di website kita ada informasi tentang beasiswa loh, bisa di cek ya :D";
       }
 
       //call the post function to tweet
