@@ -21,41 +21,33 @@ Twitter.stream(
       var statusObj = {
         status:
           "Hi @" +
-          tweet.user.screen_name +
           ". Kalo kamu lagi sedang mencari informasi beasiswa, kamu bisa kunjungin website kita loh :)",
         in_reply_to_status_id: tweet.id_str,
       };
 
       if (randomInt === 1) {
         statusObj.status =
-          "Halo kak @" +
-          tweet.user.screen_name +
+          "Halo kak" +
           ". Terkait informasi beasiswa, di website kita ada beberapa informasi yang mungkin berguna buat kakak :D";
       } else if (randomInt === 2) {
         statusObj.status =
-          "Hi kak @" +
-          tweet.user.screen_name +
+          "Hi kak" +
           "!! Lagi nyari informasi beasiswa ya kak? Di website kita ada loh info beasiswa :)";
       } else if (randomInt === 3) {
         statusObj.status =
-          "Halo @" +
-          tweet.user.screen_name +
+          "Halo" +
           ". Di website kita ada informasi beasiswa nih, kalau mau cek aja ya :D";
       } else if (randomInt === 4) {
         statusObj.status =
-          "Hey kak @" +
-          tweet.user.screen_name +
+          "Hey kak" +
           "! Kalo sedang mencari informasi beasiswa mungkin bisa cek di website kita ya :)";
       } else if (randomInt === 5) {
         statusObj.status =
-          "Hi @" +
-          tweet.user.screen_name +
+          "Hi" +
           ". Di website kita ada informasi beasiswa yang mungkin bermanfaat nih, bisa cek langsung ya :D";
       } else if (randomInt === 6) {
         statusObj.status =
-          "Halo kak @" +
-          tweet.user.screen_name +
-          "! Kita punya info beasiswa nih, link ada di bio ya :D";
+          "Halo kak" + "! Kita punya info beasiswa nih, link ada di bio ya :D";
       }
 
       //call the post function to tweet
