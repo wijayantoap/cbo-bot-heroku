@@ -12,12 +12,9 @@ var Twitter = new TwitterPackage(secret);
 Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
   stream
 ) {
-  // ... when we get tweet data...
+  // when we get tweet data
   stream.on("data", function (tweet) {
-    // print out the text of the tweet that came in
     randomInt = Math.floor(Math.random() * 7);
-
-    console.log(randomInt);
 
     var statusObj = {
       status:
@@ -59,16 +56,10 @@ Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
         "! Kita punya info beasiswa nih, link ada di bio ya :D";
     }
 
-    console.log(tweet.user);
-
     //build our reply object
 
-    //call the post function to tweet something
-    Twitter.post("statuses/update", statusObj, function (
-      error,
-      tweetReply,
-      response
-    ) {
+    //call the post function to tweet
+    Twitter.post("statuses/update", statusObj, function (error, tweetReply) {
       //if we get an error print it out
       if (error) {
         console.log(error);
@@ -79,7 +70,7 @@ Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
     });
   });
 
-  // ... when we get an error...
+  // when we get an error
   stream.on("error", function (error) {
     //print out the error
     console.log(error);
