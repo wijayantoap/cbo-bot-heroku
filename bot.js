@@ -18,8 +18,6 @@ Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
     if (!tweet.retweeted_status) {
       randomInt = Math.floor(Math.random() * 7);
 
-      console.log(tweet);
-
       //build reply object
       var statusObj = {
         status:
