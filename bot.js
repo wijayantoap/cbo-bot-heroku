@@ -9,7 +9,7 @@ let secret = {
 var Twitter = new TwitterPackage(secret);
 
 // Call the stream function and pass in 'statuses/filter', our filter object, and our callback
-Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
+Twitter.stream("statuses/filter", { track: "cari beasiswa -RT" }, function (
   stream
 ) {
   // when we get tweet data
