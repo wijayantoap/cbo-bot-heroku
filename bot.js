@@ -16,6 +16,7 @@ Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
   stream.on("data", function (tweet) {
     randomInt = Math.floor(Math.random() * 7);
 
+    //build reply object
     var statusObj = {
       status:
         "Hi @" +
@@ -55,8 +56,6 @@ Twitter.stream("statuses/filter", { track: "cari beasiswa" }, function (
         tweet.user.screen_name +
         "! Kita punya info beasiswa nih, link ada di bio ya :D";
     }
-
-    //build our reply object
 
     //call the post function to tweet
     Twitter.post("statuses/update", statusObj, function (error, tweetReply) {
